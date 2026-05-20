@@ -38,7 +38,8 @@
 随着课程推进，我将把学习代码分门别类上传至以下目录，点击下方链接可直接跳转至对应代码版块：
 
 * 📂 **[Python 基础核心语法](./01_Python_FastAPI/python/)** —— *当前正在攻坚中...🔥*
-* 📂 **[FastAPI 后端全栈开发](./01_Python_FastAPI/)** * 📂 **[第 2 阶段：Prompt 提示词工程实验](./02_Prompt_Engineering/)**
+* 📂 **[FastAPI 后端全栈开发](./01_Python_FastAPI/)**
+* 📂 **[第 2 阶段：Prompt 提示词工程实验](./02_Prompt_Engineering/)**
 * 📂 **[第 3 阶段：LangChain 应用与 RAG 向量知识库](./03_LangChain_RAG/)**
 * 📂 **[第 4 阶段：LangGraph 多智能体系统实战](./04_Agent_Systems/)**
 * 📂 **[第 5 阶段：Llama-Factory 模型微调记录](./05_LLM_Finetuning/)**
