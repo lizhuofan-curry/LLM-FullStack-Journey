@@ -1,48 +1,45 @@
-# ai大模型学习 🚀
+# LLM-FullStack-Journey 🚀
 
-欢迎来到我的 AI 大模型学习仓库！本项目用于记录我**从零基础 AI 小白到熟练掌握大模型开发**的全过程。
+欢迎来到我的 AI 大模型全栈开发学习仓库！本项目用于系统化地记录我**从零基础小白到大模型全栈开发工程师**的蜕变历程。
 
-在这里，我将通过理论学习、API 实践、主流框架应用（如 LangChain）以及 Agent 智能体构建，一步步沉淀技术，打通大模型全栈开发的核心链路。
-
----
-
-## 🗺️ 学习大纲 & 路线图
-
-我将严格按照以下知识体系进行递进式学习与实战演练：
-
-### 1. 大模型全栈开发概述 🌐
-- 大语言模型（LLM）基础概念与演进历程
-- 全栈开发整体架构与技术栈选型
-
-### 2. Prompt 提示词工程 ✍️
-- 提示词设计基本原则（明确、具体、给予思考时间）
-- 结构化提示词（Structured Prompts）编写技巧
-- 高级技术：Few-shot（少样本提示）、CoT（思维链提示）
-
-### 3. 大模型 API 全栈开发 🛠️
-- 主流大模型 API（如 OpenAI、DeepSeek 等）的对接与调用
-- 多轮对话管理与上下文窗口优化
-- 流式传输（Streaming）与函数调用（Function Calling）实战
-
-### 4. LangChain 框架应用 🦜🔗
-- **Components**：Models, Prompts, Memory, Indexes, Chains
-- 运用 LangChain 构建结构化和模块化的 LLM 应用
-- 检索增强生成（RAG）系统搭建：向量数据库（Vector DB）接入与知识库问答
-
-### 5. Agent 智能体架构 🤖
-- Agent 的核心思想：规划（Planning）、记忆（Memory）、工具（Tools）
-- 使用 LangGraph 或 AutoGen 等框架构建具备自主决策能力的智能体系统
+在这里，我将严格跟着硬核训练营的步伐，死磕技术，把每天的理论思考、代码实战和企业级项目落地过程通通沉淀下来。
 
 ---
 
-## 📂 仓库目录结构
+## 🗺️ 学习大纲 & 核心版块
 
-随着学习的深入，本仓库将逐步完善为以下结构：
+我的整个学习链路将分为两大阶段，双线进阶：
 
+### 🎯 第一阶段：应用开发线（FastAPI + 智能体生态）
+* **Python 基础与全栈铺垫**：精通 Python 核心语法、FastAPI 后端开发，打牢 MySQL 与 Redis 数据库根基。
+* **Prompt 提示词工程**：掌握结构化提示词（Structured Prompts）、Few-shot 以及 CoT（思维链）高级工程技术。
+* **大模型 API 开发**：多轮对话管理、流式传输（Streaming）与 Function Calling（函数调用）实战。
+* **LangChain 核心框架**：深入 Components（Models, Prompts, Memory, Chains），打造企业级 RAG（检索增强生成）知识库系统。
+* **LangGraph 高级智能体**：构建具备自主规划（Planning）与记忆（Memory）能力的复杂多智能体（Multi-Agent）流。
+
+### 🧠 第二阶段：算法微调线（大模型底层微调）
+* **模型参数与量化**：理解大模型核心微调理论。
+* **Llama-Factory 实战**：上手主流微调框架，打通数据准备、全量/LoRA 微调、模型评估与部署的全流程。
+
+---
+
+## 🛠️ 环境与工具准备
+
+为了保证项目的顺利运行，后续开发将基于以下环境：
+-   **开发语言**：Python 3.10+
+-   **关键依赖库**：`langchain`, `openai`, `fastapi`, `python-dotenv`, `chromadb`
+-   **代码管理**：严格利用 `.gitignore` 过滤大模型权重（`.pth`/`.bin`）及敏感密钥（`.env`），确保仓库轻量与安全。
+
+---
+
+## 📂 仓库目录规划
+
+随着课程推进，我将建立以下清晰的目录结构：
 ```text
 .
-├── 01_Prompt_Engineering/   # 提示词工程实验与最佳实践
-├── 02_API_Development/     # 大模型 API 调用与前后端全栈开发
-├── 03_LangChain_Projects/  # 基于 LangChain 的进阶应用（含 RAG 知识库）
-├── 04_Agent_Systems/       # 独立智能体与多智能体系统实战
+├── 01_Python_FastAPI/      # 后端全栈与数据库基础
+├── 02_Prompt_Engineering/   # 提示词工程与实验最佳实践
+├── 03_LangChain_RAG/       # LangChain 应用与向量知识库搭建
+├── 04_Agent_Systems/       # LangGraph 多智能体系统实战
+├── 05_LLM_Finetuning/      # Llama-Factory 模型微调记录
 └── README.md               # 项目主页导航
