@@ -15,3 +15,22 @@ for fruits in fruits:
 # 遍历一个字符串
 for char in "python":
     print(char)
+# while循环
+# 语法
+# while condition :
+# # 当condition 为 True 时，重复执行里面的代码
+# # 必须有代码的改变才能改变condition的状态
+
+# 示例
+countdown=4
+while countdown>=0:
+    print(f"conutdown:{countdown}")
+    if countdown==2:
+        break
+    countdown=countdown-1
+print("loop finished")
+## 练习continue的用法
+for j in range(1,20):
+    if j%2==0:
+        continue
+    print(f"奇数{j}")
