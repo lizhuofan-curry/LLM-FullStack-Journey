@@ -26,20 +26,26 @@
 ## 🛠️ 环境与工具准备
 
 为了保证项目的顺利运行，后续开发将基于以下环境：
--   **开发语言**：Python 3.10+
--   **关键依赖库**：`langchain`, `openai`, `fastapi`, `python-dotenv`, `chromadb`
--   **代码管理**：严格利用 `.gitignore` 过滤大模型权重（`.pth`/`.bin`）及敏感密钥（`.env`），确保仓库轻量与安全。
+- **开发语言**：Python 3.10+
+- **关键依赖库**：`langchain`, `openai`, `fastapi`, `python-dotenv`, `chromadb`
+- **代码管理**：严格利用 `.gitignore` 过滤大模型权重（`.pth`/`.bin`）及敏感密钥（`.env`），确保仓库轻量与安全。
 
 ---
 
-## 📂 仓库目录规划
+## 📂 仓库代码快速跳转（点击即可直接查看代码）
 
-随着课程推进，我将建立以下清晰的目录结构：
-```text
-.
-├── 01_Python_FastAPI/      # 后端全栈与数据库基础
-├── 02_Prompt_Engineering/   # 提示词工程与实验最佳实践
-├── 03_LangChain_RAG/       # LangChain 应用与向量知识库搭建
-├── 04_Agent_Systems/       # LangGraph 多智能体系统实战
-├── 05_LLM_Finetuning/      # Llama-Factory 模型微调记录
-└── README.md               # 项目主页导航
+随着课程推进，我将把学习代码分门别类上传至以下目录，点击下方链接可直接跳转至对应代码版块：
+
+* 📂 **[第 1 阶段：Python 基础与 FastAPI 后端开发](./01_Python_FastAPI/)** —— *当前正在攻坚中...🔥*
+* 📂 **[第 2 阶段：Prompt 提示词工程实验](./02_Prompt_Engineering/)**
+* 📂 **[第 3 阶段：LangChain 应用与 RAG 向量知识库](./03_LangChain_RAG/)**
+* 📂 **[第 4 阶段：LangGraph 多智能体系统实战](./04_Agent_Systems/)**
+* 📂 **[第 5 阶段：Llama-Factory 模型微调记录](./05_LLM_Finetuning/)**
+
+---
+
+## ✍️ 学习心得与碎碎念
+
+> **"种一棵树最好的时间是十年前，其次是现在。"**
+> 
+> 从零开始并不迷茫，坚持把每一步的 Code 和思考记录下来，见证自己向 AI 全栈工程师的蜕变！如果你也对大模型开发感兴趣，欢迎 **Star ⭐** 本项目，一起交流、共同进步！
