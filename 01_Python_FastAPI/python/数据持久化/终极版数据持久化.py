@@ -11,7 +11,7 @@ if os.path.exists(file_path):
 else:
     # 第一次运行时初始化默认数据
     contacts = [
-        
+
         {'name': 'Alice', 'phone': '111-2222', 'is_vip': True},
         {'name': 'Bob', 'phone': '333-4444', 'is_vip': False},
     ]
@@ -80,7 +80,7 @@ def delete_contact():
     if not found:
         print(f"❓ 未找到名叫 [{name_to_delete}] 的联系人，请核对后重试。")
     else:
-        # 🟢 联动持久化：删完人，立刻存盘！
+        # 🟢 联动持久化：删完人，立刻存盘！1
         save_to_disk()
 
 
