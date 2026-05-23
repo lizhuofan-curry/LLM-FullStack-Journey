@@ -38,3 +38,14 @@ async def calculate(request: CalcRequest):
         result = request.a / request.b
 
     return{"result":result}
+
+import uvicorn
+
+# ... 你原本的所有计算器代码保持不变 ...
+
+# 在文件最底部加上这 3 行：
+if __name__ == "__main__":
+    import os
+    # 自动获取当前文件的文件名，完美解决中文文件名找不到的问题
+    file_name = os.path.basename(__file__).replace(".py", "")
+    uvicorn.run(f"{file_name}:app", host="127.0.0.1", port=8000, reload=True)
