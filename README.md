@@ -1,53 +1,128 @@
-# LLM-FullStack-Journey 🚀
+<div align="center">
 
-欢迎来到我的 AI 大模型全栈开发学习仓库！本项目用于系统化地记录我**从零基础小白到大模型全栈开发工程师**的蜕变历程。
+# LLM Full-Stack Journey 🚀
 
-在这里，我将严格跟着硬核训练营的步伐，死磕技术，把每天的理论思考、代码实战和企业级项目落地过程通通沉淀下来。
+**从学习笔记到可运行、可测试、可迭代的 AI 应用。**
+
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688?style=flat&logo=fastapi&logoColor=white)
+[![CI](https://github.com/lizhuofan-curry/LLM-FullStack-Journey/actions/workflows/ci.yml/badge.svg)](https://github.com/lizhuofan-curry/LLM-FullStack-Journey/actions/workflows/ci.yml)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat)
+
+</div>
+
+这个仓库记录我学习 Python、FastAPI、数据库与 LLM 应用开发的过程。除了原有课程笔记，仓库现在提供一个独立的 **AI Study Coach API**：默认无需 API Key 即可运行，也可以切换到兼容 Chat Completions 接口的真实模型服务。
+
+## What You Can Run
+
+| Endpoint | Method | Purpose |
+| --- | --- | --- |
+| `/` | `GET` | 服务入口与文档链接 |
+| `/health` | `GET` | 健康检查和当前 Provider |
+| `/api/chat` | `POST` | 获取 AI 工程学习建议 |
+| `/docs` | `GET` | FastAPI 自动生成的交互式文档 |
+
+默认的 `demo` Provider 是确定性的离线实现，方便任何人直接体验、运行测试和理解代码结构。设置环境变量后，可切换到 OpenAI-compatible Provider。
+
+## Quick Start
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e ".[dev]"
+uvicorn app.main:app --reload
+```
+
+打开 <http://127.0.0.1:8000/docs>，或者直接请求：
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message":"如何开始一个 FastAPI 项目？","context":["需要自动化测试"]}'
+```
+
+示例响应：
+
+```json
+{
+  "reply": "学习建议：先实现健康检查和请求模型，再补充业务路由、异常处理与测试。\n已参考 1 条补充背景。",
+  "provider": "demo",
+  "model": "study-coach-v1"
+}
+```
+
+## Connect a Real Model
+
+复制 `.env.example` 为 `.env`，并填写兼容 Chat Completions 接口的服务信息：
+
+```dotenv
+LLM_PROVIDER=openai-compatible
+LLM_API_KEY=replace-me
+LLM_BASE_URL=https://api.openai.com/v1
+LLM_MODEL=gpt-4o-mini
+```
+
+`.env` 已被 Git 忽略，请勿提交真实密钥。
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Client["Client / Swagger UI"] --> API["FastAPI API"]
+    API --> Config["Environment Settings"]
+    API --> Provider{"Provider"}
+    Provider --> Demo["Offline Study Coach"]
+    Provider --> Remote["OpenAI-compatible API"]
+    Tests["pytest"] --> API
+    CI["GitHub Actions"] --> Tests
+```
+
+```text
+.
+├── app/
+│   ├── main.py             # API routes and error mapping
+│   ├── config.py           # Environment-backed settings
+│   ├── schemas.py          # Pydantic request/response models
+│   └── services/chat.py    # Provider abstraction and implementations
+├── tests/test_api.py       # API contract tests
+├── .github/workflows/ci.yml
+├── .env.example
+└── pyproject.toml
+```
+
+## Quality Checks
+
+```powershell
+ruff check app tests
+pytest -q
+```
+
+GitHub Actions 会在每次 Push 和 Pull Request 中运行相同的检查。
+
+## Learning Archive
+
+原有学习内容继续保留，作为从基础到应用的过程记录：
+
+- [Python 核心语法](./01_Python_FastAPI/python/)
+- [FastAPI 学习示例](./01_Python_FastAPI/FastAPI/)
+- [MySQL 学习与练习](./数据库/MYSQL/)
+
+## Roadmap
+
+- [x] Python、FastAPI 与数据库基础
+- [x] 可运行的 FastAPI AI 应用骨架
+- [x] 离线 Provider、接口测试与 CI
+- [ ] 增加多轮会话与持久化存储
+- [ ] 增加 RAG 检索、引用与评估
+- [ ] 使用 LangGraph 构建有状态 Agent 工作流
+- [ ] 增加 Docker 与在线 Demo
+
+## Security
+
+- 不在仓库中提交 API Key、`.env` 或模型权重。
+- CI 仅使用离线 Provider，不会调用外部模型或消耗额度。
+- 外部 Provider 错误会映射为明确的 `502/503` API 响应。
 
 ---
 
-## 🗺️ 学习大纲 & 核心版块
-
-我的整个学习链路将分为两大阶段，双线进阶：
-
-### 🎯 第一阶段：应用开发线（FastAPI + 智能体生态）
-* **Python 基础与全栈铺垫**：精通 Python 核心语法、FastAPI 后端开发，打牢 MySQL 与 Redis 数据库根基。
-* **Prompt 提示词工程**：掌握结构化提示词（Structured Prompts）、Few-shot 以及 CoT（思维链）高级工程技术。
-* **大模型 API 开发**：多轮对话管理、流式传输（Streaming）与 Function Calling（函数调用）实战。
-* **LangChain 核心框架**：深入 Components（Models, Prompts, Memory, Chains），打造企业级 RAG（检索增强生成）知识库系统。
-* **LangGraph 高级智能体**：构建具备自主规划（Planning）与记忆（Memory）能力的复杂多智能体（Multi-Agent）流。
-
-### 🧠 第二阶段：算法微调线（大模型底层微调）
-* **模型参数与量化**：理解大模型核心微调理论。
-* **Llama-Factory 实战**：上手主流微调框架，打通数据准备、全量/LoRA 微调、模型评估与部署的全流程。
-
----
-
-## 🛠️ 环境与工具准备
-
-为了保证项目的顺利运行，后续开发将基于以下环境：
-- **IDE 编辑器**：PyCharm
-- **开发语言**：Python 3.10+
-- **关键依赖库**：`langchain`, `openai`, `fastapi`, `python-dotenv`, `chromadb`
-- **代码管理**：严格利用 `.gitignore` 过滤大模型权重（`.pth`/`.bin`）及敏感密钥（`.env`），确保仓库轻量与安全。
-
----
-
-## 📂 仓库代码快速跳转（点击即可直接查看代码）
-
-随着课程推进，我将把学习代码分门别类上传至以下目录，点击下方链接可直接跳转至对应代码版块：
-
-* 📂 **[Python 基础核心语法](./01_Python_FastAPI/python/)** 
-* 📂 **[FastAPI 后端全栈开发](./01_Python_FastAPI/FastAPI)**—— *当前正在攻坚中...🔥*
-* 📂 **[第 2 阶段：Prompt 提示词工程实验](./02_Prompt_Engineering/)**
-* 📂 **[第 3 阶段：LangChain 应用与 RAG 向量知识库](./03_LangChain_RAG/)**
-* 📂 **[第 4 阶段：LangGraph 多智能体系统实战](./04_Agent_Systems/)**
-* 📂 **[第 5 阶段：Llama-Factory 模型微调记录](./05_LLM_Finetuning/)**
-
----
-
-## ✍️ 学习心得与碎碎念
-
-> **"种一棵树最好的时间是十年前，其次是现在。"**
-> 
-> 从零开始并不迷茫，坚持把每一步的 Code 和思考记录下来，见证自己向 AI 全栈工程师的蜕变！如果你也对大模型开发感兴趣，欢迎 **Star ⭐** 本项目，一起交流、共同进步！
+如果这个学习路径对你有帮助，欢迎通过 Issue 交流改进建议。
